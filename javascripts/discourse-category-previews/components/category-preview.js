@@ -20,7 +20,7 @@ export default Component.extend({
       const previewPart = rawPreview.split("~");
       const permittedGroup = previewPart[4] ? previewPart[4].split(",") : [];
       const hasCategoryAccess = loggedInUserGroup.some(g => permittedGroup.indexOf(g) > -1);
-      const shouldRender = loggedInUser && (!isStaff || !hasCategoryAccess);
+      const shouldRender = loggedInUser && !(isStaff || hasCategoryAccess);
 
       if (shouldRender && categorySlug === previewPart[0]) {
         previewData.push({
